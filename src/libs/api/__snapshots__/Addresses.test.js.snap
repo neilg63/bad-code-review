@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Address API searching should match snapshot 1`] = `
+Object {
+  "addressData": Array [
+    Object {
+      "line1": "123",
+    },
+  ],
+}
+`;

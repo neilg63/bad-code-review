@@ -1,0 +1,55 @@
+{
+  "name": "code-review",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "apisauce": "1.0.2",
+    "axios": "0.18.0",
+    "enzyme": "3.8.0",
+    "enzyme-adapter-react-16": "1.9.1",
+    "enzyme-to-json": "3.3.5",
+    "js-cookie": "2.2.0",
+    "prop-types": "15.7.2",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-redux": "5.1.1",
+    "react-router-dom": "4.3.1",
+    "redux": "3.7.2",
+    "redux-thunk": "2.3.0",
+    "trickycdm-react-scripts": "0.0.17"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "format:fix": "semistandard --fix",
+    "lint": "eslint --ext=js --ext=jsx .",
+    "lint:fix": "eslint --ext=js --ext=jsx --fix .",
+    "prepush-msg": "echo Pre-push checks...' && exit 0"
+  },
+  "semistandard": {
+    "parser": "babel-eslint",
+    "globals": [],
+    "env": [
+      "jest",
+      "browser",
+      "node"
+    ],
+    "ignore": []
+  },
+  "pre-push": [
+    "prepush-msg",
+    "format:fix",
+    "lint:fix"
+  ],
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
