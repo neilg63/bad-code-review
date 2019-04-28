@@ -1,25 +1,59 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import AuthenticatedRoute from './components/AuthenticatedRoute';
-import GlobalErrorBoundary from './components/GlobalErrorBoundary';
-import Home from 'containers/Home';
+import React, { Component } from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import GlobalErrorBoundary from './components/GlobalErrorBoundary'
+import HomePage from 'containers/Home'
+import Secrets from 'containers/Secrets/Secrets'
 
 class App extends Component {
   render () {
-    return (
-      <GlobalErrorBoundary>
+    return (<GlobalErrorBoundary>
         <BrowserRouter>
-          <div className={'main-container'}>
+            <div className={'main-container'}>
             <Switch>
-              <AuthenticatedRoute exact path='/' component={() => <Home />} />
-              <Route exact path='/' component={() => <h1>regular route</h1>} />
-              <Route component={() => <div>404</div>} />
+
+              <Route exact path='/secrets' component={() => <Secrets secrets={defaultSecrets} user={{ name: { first_name: 'joe', second_name: 'bloggs' } }} />} />
+              <Route exact path='/' component={() => <HomePage />} />
             </Switch>
           </div>
         </BrowserRouter>
       </GlobalErrorBoundary>
-    );
+    )
   }
 }
 
-export default App;
+export default App
+
+var defaultSecrets = [
+  {
+    'id': 2,
+    'name': 'Avondale Brewing Co',
+    'brewery_type': 'micro',
+    'street': '201 41st St S',
+    'city': 'Birmingham',
+    'state': 'Alabama',
+    'postal_code': '35222-1932',
+    'country': 'United States',
+    'longitude': '-86.774322',
+    'latitude': '33.524521',
+    'phone': '2057775456',
+    'website_url': 'http://www.avondalebrewing.com',
+    'updated_at': '2018-08-23T23:19:57.825Z',
+    'tag_list': []
+  },
+  {
+    'id': 4,
+    'name': 'Band of Brothers Brewing Company',
+    'brewery_type': 'micro',
+    'street': '1605 23rd Ave',
+    'city': 'Tuscaloosa',
+    'state': 'Alabama',
+    'postal_code': '35401-4653',
+    'country': 'United States',
+    'longitude': '-87.5621551272424',
+    'latitude': '33.1984907123707',
+    'phone': '2052665137',
+    'website_url': 'http://www.bandofbrosbrewing.com',
+    'updated_at': '2018-08-23T23:19:59.462Z',
+    'tag_list': []
+  },
+]
