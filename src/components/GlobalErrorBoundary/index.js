@@ -1,7 +1,7 @@
 import React from 'react';
 
 class Index extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
@@ -14,7 +14,7 @@ class Index extends React.Component {
     this.setState({ hasError: true, errorUuid });
   }
 
-  render () {
+  render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
       return (

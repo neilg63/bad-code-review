@@ -4,14 +4,14 @@ import React from 'react'
 import { getSecrets } from '../../data/api.js';
 
 class Secrets extends React.Component {
-  constructor(props) {
-    super(props)
 
-    this.state = {
-      stateSecrets: this.props.secrets || [],
-      authenticated: false
-    }
+  // state can be declaraed and initialized outside the constructor
+  state = {
+    stateSecrets: this.props.secrets || [],
+    authenticated: false
   }
+
+  // consstructor is now superfluous as props passed automatically
 
   componentDidMount = async () => {
     this.setState({ stateSecrets: await getSecrets() })
@@ -37,6 +37,7 @@ class Secrets extends React.Component {
     // Future refactoring, implement authentication / user login 
     // consider redirecting all unauthorised visitors to home / login screen in the router
     // ideally managed by global state.
+    // Add wrapper for each brewery with a unique key.
     return (
       <div className="div-class-state-secrets">
         <p>User: {n}</p>
@@ -45,10 +46,10 @@ class Secrets extends React.Component {
         {
           stateSecrets.map(secret => {
             return (
-              <>
+              <div className="item" id={`secret-${secret.id}`} key={secret.id}>
                 <h1>{secret.name}</h1>
                 <h4>{secret.updated_at}</h4>
-              </>
+              </div>
             )
           })
         }

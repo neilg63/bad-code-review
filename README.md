@@ -1,3 +1,22 @@
+# Code Review
+
+When running the app the two route components were not resolved in my test environment. More important the fetch request would never work as first promise returns a response object and not the actual json data. Async / await still make sense but enly correctly using then() and catch() with fetch() with error checking.
+Other comments relate more to the structure, readable and maintainability of the application as well as destructuirng and reassigning varianles / constants more efficiently.
+
+Read other notes in the code and compare GIT commits.
+
+## Missing
+
+The app uses a router, but has no meny. This should be a separate component with properties mapped to the redux store.
+
+## To Do
+
+Redux state management is only used for the navigation. When the reduce store is hooked up the app's main file (index.js), it is not mapped to properties or used for other data sets, such as the list of breweries or user status.
+
+Neil Gardner 15/05/2019
+
+# Standard Installation Notes
+
 This project was bootstrapped with a fork of [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scrips

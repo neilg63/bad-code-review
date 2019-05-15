@@ -8,6 +8,7 @@ export const getSecrets = async () => {
       if (response.status === 200) {
         return response.json();
       } else {
+        // return empty array if response is unsuccessful
         return [];
       }
     }).then(data => {
