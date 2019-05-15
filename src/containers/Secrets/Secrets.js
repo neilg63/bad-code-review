@@ -1,8 +1,12 @@
 import React from 'react'
+// import API method call from separate file, ideally updating global state
+// once refactored, but not essential for such a small app
+import { getSecrets } from '../../data/api.js';
 
 class Secrets extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
+
     this.state = {
       stateSecrets: this.props.secrets || [],
       authenticated: false
@@ -13,15 +17,30 @@ class Secrets extends React.Component {
     this.setState({ stateSecrets: await getSecrets() })
   }
 
-  render () {
-    const n = this.props.user.name.first_name + ' ' + this.props.user.name.second_name
+  render() {
+    // destructure props for easier readability
+    const { user } = this.props;
+    // considr using template string (not essential here)
+    const n = user.name.first_name + ' ' + user.name.second_name
+    // destructure state properties too, but with let
+    let { stateSecrets } = this.state;
+    // Calculate once here
+    let numStateSecrets = stateSecrets.length;
+    /*
+      No magic numbers !
+      classified number should be  calculated from a filtered list 
+      based on real data rather than hard coded, but sure which criteria to apply,
+      i'll for when brewery_type is not micro, but woyld need to review how we determne this
+    */
+    let numClassifiedSecrets = stateSecrets.filter(secret => secret.brewery_type !== "micro").length;
+    // class name is not dynamic, so just use quotes
     return (
-      <div className={'Div-class_StateSecrets'}>
+      <div className="div-class-state-secrets">
         <p>User: {n}</p>
         <p>Only authenticated users should be viewing this page</p>
-        <p>There is a total of {this.state.stateSecrets.length} secrets. of these {this.state.stateSecrets.length} secrets 4 are classified. </p>
+        <p>There is a total of {numStateSecrets} secrets. of these {numStateSecrets} secrets {numClassifiedSecrets} are classified. </p>
         {
-          this.state.stateSecrets.map(secret => {
+          stateSecrets.map(secret => {
             return (
               <>
                 <h1>{secret.name}</h1>
@@ -32,15 +51,6 @@ class Secrets extends React.Component {
         }
       </div>
     )
-  }
-}
-
-async function getSecrets () {
-  try {
-    var results = await fetch('https://api.openbrewerydb.org/breweries')
-    return results
-  } catch (e) {
-    return []
   }
 }
 
