@@ -34,6 +34,9 @@ class Secrets extends React.Component {
     */
     let numClassifiedSecrets = stateSecrets.filter(secret => secret.brewery_type !== "micro").length;
     // class name is not dynamic, so just use quotes
+    // Future refactoring, implement authentication / user login 
+    // consider redirecting all unauthorised visitors to home / login screen in the router
+    // ideally managed by global state.
     return (
       <div className="div-class-state-secrets">
         <p>User: {n}</p>

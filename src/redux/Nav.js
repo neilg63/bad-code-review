@@ -4,7 +4,7 @@ const initialState = {
         { label: 'Posts', href: '/posts' }
     ],
 };
-
+// This does not appear to be used.
 const UPDATE_ACTIVE_LINK = 'Nav/UPDATE_ACTIVE_LINK';
 
 export function updateActiveLink(label) {
