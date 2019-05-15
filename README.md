@@ -1,9 +1,9 @@
 # Code Review
 
-When running the app the two route components were not resolved in my test environment. More important the fetch request would never work as first promise returns a response object and not the actual json data. Async / await still make sense but enly correctly using then() and catch() with fetch() with error checking.
+When running the app the two route components were not resolved in my test environment. More important the fetch request would never work as the first promise returns a response object and not the actual json data. Async / await still makes sense but enly if then() and catch() are used correctly with fetch().
 Other comments relate more to the structure, readable and maintainability of the application as well as destructuirng and reassigning varianles / constants more efficiently.
 
-Read other notes in the code and compare GIT commits.
+{;ease read other more specific notes in the code and compare GIT commits.
 
 ## Missing
 
