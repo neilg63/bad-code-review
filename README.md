@@ -7,7 +7,7 @@ Please read other more specific notes in the code and compare GIT commits.
 
 ## Missing
 
-The app uses a router, but has no meny. This should be a separate component with properties mapped to the redux store.
+The app uses a router, but has no menu. This should be a separate component with properties mapped to the redux store.
 
 ## To Do
 
